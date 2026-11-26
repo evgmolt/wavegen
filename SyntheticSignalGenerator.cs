@@ -25,7 +25,7 @@ namespace WaveGen
             sb.AppendLine("Pulse : \t78");
 
             // Заголовок в точном соответствии с вашим форматом (разделитель - табуляция)
-            sb.AppendLine("Date/time\tECG1\tECG2\tReo 1\tReo 2\tSphigmo 1\tSphigmo 2\tSphigmo 3\tSphigmo 4\tPPG\tApex\tSound\t");
+            sb.AppendLine("Date/time\tECG1\tECG2\tReo 1\tReo 2\tSphigmo 1\tSphigmo 2\tSphigmo 3\tSphigmo 4\tPPG\tApex");
 
             DateTime baseTime = new DateTime(2026, 11, 21, 20, 48, 9);
 
@@ -67,13 +67,13 @@ namespace WaveGen
                 int apex = -377500 + rnd.Next(-150, 150);
                 string sound8 = "-700\t-750\t-800\t-720\t-690\t-740\t-780\t-710";
 
-                // 5. Манжеты давления (NIBP1: 125/80, NIBP2: 140/90, NIBP3: 125/80, NIBP4: 140/90) + DeviceStatus
-                string nibpAndStatus = "125\t80\t50\t140\t90\t50\t125\t80\t50\t140\t90\t50\t35466";
+//                // 5. Манжеты давления (NIBP1: 125/80, NIBP2: 140/90, NIBP3: 125/80, NIBP4: 140/90) + DeviceStatus
+//                string nibpAndStatus = "125\t80\t50\t140\t90\t50\t125\t80\t50\t140\t90\t50\t35466";
 
                 sb.AppendLine(
                     $"{elapsedMicroseconds}\t{ecg1}\t{ecg2}\t{reo1}\t{reo2}\t" +
                     $"{sphigmoArm1}\t{sphigmoLeg1}\t{sphigmoArm2}\t{sphigmoLeg2}\t" +
-                    $"{ppg}\t{apex}\t{sound8}\t{nibpAndStatus}");
+                    $"{ppg}\t{apex}");
             }
 
             File.WriteAllText(filePath, sb.ToString(), Encoding.UTF8);
